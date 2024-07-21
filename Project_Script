@@ -1,0 +1,18 @@
+setwd("Directory-Path")
+getwd()
+myProject <- function(proj, ...) {
+  
+  require(ProjectTemplate)
+  create.project(proj, ...)
+  
+  x <- c("Version: 1.0", "", "RestoreWorkspace: Default", "SaveWorkspace: Default", 
+         "AlwaysSaveHistory: Default", "", "EnableCodeIndexing: Yes", 
+         "UseSpacesForTab: Yes", "NumSpacesForTab: 2", "Encoding: UTF-8", 
+         "", "RnwWeave: Sweave", "LaTeX: pdfLaTeX", "AutoAppendNewline: Yes")
+  
+  cat(paste(x, collapse="\n"), file=file.path(proj, paste0(basename(proj), ".Rproj")))
+  
+  message(paste(basename(proj), "has been created"))
+}
+
+myProject("Name_of_Project.Rproj")
